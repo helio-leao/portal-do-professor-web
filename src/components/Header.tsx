@@ -14,9 +14,10 @@ export default function Header() {
       await api.delete(`/auth/logout`, {
         data: { refreshToken: session.refreshToken },
       });
-      signOut();
     } catch (error) {
-      alert(error);
+      console.error(error);
+    } finally {
+      signOut();
     }
   }
 
