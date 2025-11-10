@@ -10,7 +10,7 @@ export default function AuthLayout() {
   }
 
   if (session) {
-    return <Navigate to="/" />;
+    return <Navigate to="/dashboard" />;
   }
 
   return (

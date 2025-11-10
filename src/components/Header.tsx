@@ -24,15 +24,10 @@ export default function Header() {
         <nav>
           <ul className="flex gap-4">
             <li>
-              <Link to="/" className="flex py-2 text-white">
-                Home
+              <Link to="/dashboard" className="flex py-2 text-white">
+                Dashboard
               </Link>
             </li>
-            {/* <li>
-              <Link to="/" className="flex py-2 text-white">
-                Home
-              </Link>
-            </li> */}
           </ul>
         </nav>
       </div>
