@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import api from "../services/api";
+import type Session from "../types/Session";
+import { useSession } from "../contexts/SessionContext";
 
 export default function LoginPage() {
+  const { signIn } = useSession();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -9,6 +12,23 @@ export default function LoginPage() {
 
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    try {
+      setIsLoading(true);
+
+      const loginData = {
+        username,
+        password,
+      };
+
+      const { data } = await api.post<Session>("/auth/login", loginData);
+      const sessionUser = { _id: data.user._id };
+      signIn({ ...data, user: sessionUser });
+    } catch (error) {
+      alert(error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -47,12 +67,6 @@ export default function LoginPage() {
           >
             Login
           </button>
-          <Link
-            to="/signup"
-            className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
-          >
-            Signup
-          </Link>
         </div>
       </form>
     </main>
