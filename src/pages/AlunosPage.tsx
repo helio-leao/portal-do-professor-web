@@ -87,7 +87,7 @@ export default function AlunosPage() {
                 </Link>
                 <button
                   className="cursor-pointer"
-                  onClick={() => handleDeleteAluno(aluno._id)}
+                  onClick={() => handleDeleteAluno(aluno._id!)}
                 >
                   <FaRegTrashAlt />
                 </button>
