@@ -1,5 +1,5 @@
 export default interface Aluno {
-  _id: string;
+  _id?: string;
   nome: string;
   email: string;
   turma: string;

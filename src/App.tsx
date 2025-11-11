@@ -11,6 +11,7 @@ import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import AlunosPage from "./pages/AlunosPage";
 import TurmasPage from "./pages/TurmasPage";
+import NovoAlunoPage from "./pages/NovoAlunoPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route element={<AuthLayout />}>
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/alunos" element={<AlunosPage />} />
+            <Route path="/alunos/novo" element={<NovoAlunoPage />} />
             <Route path="/turmas" element={<TurmasPage />} />
           </Route>
         </Routes>
