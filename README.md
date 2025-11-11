@@ -4,10 +4,26 @@ Frontend do projeto **Portal do Professor**, desenvolvido com **Vite + React + T
 
 ---
 
+## 🧑‍💻 Integração com a API
+
+Este frontend se integra diretamente à API do Portal do Professor, disponível no repositório abaixo:
+
+🔗 Repositório da API: [helio-leao/portal-do-professor-api](https://github.com/helio-leao/portal-do-professor-api)
+
+A API é construída com Node.js + Express + TypeScript, com autenticação JWT e dados mockados.
+Use o usuário abaixo para login e testes locais:
+
+```text
+username: admin
+password: 123
+```
+
+---
+
 ## 🚀 Tecnologias e Ferramentas
 
 - **Vite + React + TypeScript** — estrutura leve e moderna para desenvolvimento rápido.
-- **Axios** com *interceptors* — responsável por gerenciar tokens de autenticação vindos da API.
+- **Axios** com _interceptors_ — responsável por gerenciar tokens de autenticação vindos da API.
 - **Tailwind CSS** — estilização responsiva e eficiente.
 - **React Router DOM** — gerenciamento de rotas públicas e protegidas.
 - **Context API** — controle de sessão do usuário e dados compartilhados entre componentes.
@@ -19,6 +35,7 @@ Frontend do projeto **Portal do Professor**, desenvolvido com **Vite + React + T
 O frontend foi projetado de forma **escalável**, com **componentização clara** e **separação de responsabilidades**.
 
 ### Funcionalidades implementadas:
+
 - Login funcional com integração à API.
 - Gerenciamento completo de tokens (armazenamento, atualização e logout automático em caso de erro de autenticação).
 - CRUD completo de **alunos** — adicionar, visualizar, editar e deletar.
@@ -61,6 +78,7 @@ VITE_API_URL=
 ```
 
 Exemplo:
+
 ```
 VITE_API_URL=http://localhost:3000
 ```
