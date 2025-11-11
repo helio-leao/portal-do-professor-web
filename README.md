@@ -1,73 +1,93 @@
-# React + TypeScript + Vite
+# Portal do Professor - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend do projeto **Portal do Professor**, desenvolvido com **Vite + React + TypeScript**, seguindo o padrão **mobile first**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologias e Ferramentas
 
-## React Compiler
+- **Vite + React + TypeScript** — estrutura leve e moderna para desenvolvimento rápido.
+- **Axios** com *interceptors* — responsável por gerenciar tokens de autenticação vindos da API.
+- **Tailwind CSS** — estilização responsiva e eficiente.
+- **React Router DOM** — gerenciamento de rotas públicas e protegidas.
+- **Context API** — controle de sessão do usuário e dados compartilhados entre componentes.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📱 Estrutura e Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+O frontend foi projetado de forma **escalável**, com **componentização clara** e **separação de responsabilidades**.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Funcionalidades implementadas:
+- Login funcional com integração à API.
+- Gerenciamento completo de tokens (armazenamento, atualização e logout automático em caso de erro de autenticação).
+- CRUD completo de **alunos** — adicionar, visualizar, editar e deletar.
+- Controle de sessão via **Context API**.
+- Rotas públicas e protegidas.
+- Layouts distintos para usuários autenticados e visitantes (`AuthLayout` e `GuestLayout`).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Estrutura de Rotas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```tsx
+<SessionProvider>
+  <Router>
+    <Routes>
+      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+
+      <Route element={<GuestLayout />}>
+        <Route path="/login" element={<LoginPage />} />
+      </Route>
+
+      <Route element={<AuthLayout />}>
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/alunos" element={<AlunosPage />} />
+        <Route path="/alunos/novo" element={<NovoAlunoPage />} />
+        <Route path="/alunos/:id/editar" element={<EditarAlunoPage />} />
+        <Route path="/turmas" element={<TurmasPage />} />
+      </Route>
+    </Routes>
+  </Router>
+</SessionProvider>
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚙️ Variáveis de Ambiente
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Crie um arquivo `.env` na raiz do projeto e adicione:
+
 ```
+VITE_API_URL=
+```
+
+Exemplo:
+```
+VITE_API_URL=http://localhost:3000
+```
+
+---
+
+## 🧩 Instalação e Execução
+
+```bash
+npm install
+npm run dev
+```
+
+---
+
+## 💡 Observação
+
+O foco deste desenvolvimento foi entregar as **funcionalidades principais** dentro do tempo disponível.  
+Funcionalidades implementadas e testadas:
+
+✅ Login e autenticação  
+✅ Gerenciamento de token via interceptors  
+✅ CRUD de alunos (criar, listar, editar, deletar)  
+✅ Estrutura escalável e mobile first
+
+---
+
+## 🧑‍💻 Autor
+
+Desenvolvido por **Hélio** — Full Stack Developer (Node, React, React Native, Mongo, Postgres)
